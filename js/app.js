@@ -1,15 +1,3 @@
-// Ho cambiato le immagini perché le altre non mi piacevano :D
-// const slides = [
-//     "./img/01.jpg",
-//     "./img/02.jpg",
-//     "./img/03.jpg",
-//     "./img/04.jpg",
-//     "./img/05.jpg",
-//     "./img/06.jpg",
-//     "./img/07.jpg",
-//     "./img/08.png",
-//     "./img/09.jpg"
-// ];
 const slides = [
     {
         url: 'http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg',
@@ -48,6 +36,12 @@ const slides = [
 
 const slideElements = [];
 let indexAct = 0;
+
+// variabile che tiene in memoria la direzione dello scorrimento delle slide con
+// l'interval: se vado indietro con le prev-arrow lo scorrimento automatico andrà indietro
+// se vado avanti con next-arrow lo scorrimento automatico andrà avanti
+// di default va avanti
+let intervalDir = 0;
 
 const wrapperElement = document.querySelector('.slides-wrapper');
 const sliderElement = document.querySelector('main');
@@ -227,6 +221,7 @@ function goTo(i) {
 }
 
 function nextFun() {
+    intervalDir = 0;
     if (indexAct === slideElements.length - 1) {
         goTo(0);
     } else {
@@ -235,6 +230,7 @@ function nextFun() {
 };
 
 function prevFun() {
+    intervalDir = 1;
     if (indexAct === 0) {
         goTo(slideElements.length - 1)
     } else {
@@ -252,5 +248,6 @@ function stopInterval() {
 }
 
 function restartInterval() {
-    myInterval = setInterval(nextFun, 3000);
+    if (!intervalDir) myInterval = setInterval(nextFun, 3000);
+    else myInterval = setInterval(prevFun, 3000);
 }
