@@ -166,7 +166,7 @@ for (let i = 0; i < slides.length; i++) {
     // mi salvo tutte le slide in un array
     slideElements.push(li);
 }
-console.log(slideElements);
+// console.log(slideElements);
 
 // implementare i pointer
 // const pointersWrapperElement = document.querySelector('.pointers-wrapper');
@@ -206,7 +206,7 @@ function goTo(i) {
     // resetInterval();
 
     // togliere active dal pointer attivo
-    console.log(i);
+    // console.log(i);
     thumbnailContainer[indexAct].classList.remove('active');
     // togliere active dalla slide attiva
     slideElements[indexAct].classList.remove('active');
