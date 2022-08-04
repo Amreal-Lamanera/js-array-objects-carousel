@@ -44,7 +44,7 @@ let indexAct = 0;
 let intervalDir = 0;
 
 const wrapperElement = document.querySelector('.slides-wrapper');
-const sliderElement = document.querySelector('main');
+const sliderElement = document.querySelectorAll('.container-fluid')[0];
 
 // eventi di stop/restart dello scorrimento automatico
 sliderElement.addEventListener('mouseover', stopInterval);
@@ -76,38 +76,14 @@ for (let i = 0; i < slides.length; i++) {
     }
 
     const src = slides[i].url;
-    // console.log(src);
-    // creo elemento img
-    // const img = document.createElement('img');
-    // assegno alla proprietà src di img il valore src
-    // img.src = src;
-    // console.log(img);
-    // inserisco img in li
-    // li.append(img);
-    // console.log(li);
-    // li.style.backgroundImage.url = src;
     li.style.backgroundImage = `url(${src})`;
     li.style.backgroundSize = 'cover';
+    li.style.backgroundPosition = 'bottom';
     // console.dir(li.style);
 
     /****************************************************
         GESTIONE THUMBNAILS
     ****************************************************/
-    // let pointer;
-    // pointer = document.createElement('li');
-    // pointer.className = 'pointer';
-    // pointer.id = i;
-
-    // if (i === indexAct) {
-    //     pointer.classList.add('active');
-    // }
-
-    // pointer.addEventListener('click', goTo.bind(pointer, i));
-
-    // pointersWrapperElement.append(pointer);
-    // pointersContainer.push(pointer);
-
-
     const tDiv = document.createElement('div');
     tDiv.className = 'grid-col';
 
@@ -116,11 +92,15 @@ for (let i = 0; i < slides.length; i++) {
         tDiv.classList.add('active');
     }
     tDiv.addEventListener('click', goTo.bind(tDiv, i));
+    // cambiando slide dalle thumbnails resetto il contatore
+    tDiv.addEventListener('click', resetInterval);
     // const tImg = document.createElement('img');
     // tImg.src = src;
     // tDiv.append(tImg);
     tDiv.style.backgroundImage = `url(${src})`;
     tDiv.style.backgroundSize = 'cover';
+    tDiv.style.backgroundPosition = 'center';
+    console.dir(tDiv.style)
     thumbnailElement.append(tDiv);
     thumbnailContainer.push(tDiv);
 

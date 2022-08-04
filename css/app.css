@@ -20,6 +20,7 @@ body {
 ul {
     list-style: none;
     padding: 0;
+    background-color: black;
 }
 
 li.slide {
@@ -32,15 +33,6 @@ li.slide {
 }
 
 .slide {
-    background-color: black;
-}
-
-.slide img {
-    /* width: 1800px;
-    height: 800px; */
-    object-fit: cover;
-    object-position: center;
-    /* display: none; */
     animation: appear 1s linear;
 }
 
