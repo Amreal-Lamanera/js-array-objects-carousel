@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.slider {
+    position: relative;
+}
+
+.slide {
+    background-color: black;
+}
+
+.slide img {
+    width: 100%;
+    /* height: 650px; */
+    object-fit: cover;
+    object-position: center;
+    /* display: none; */
+    animation: appear 1s linear;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+
+    75% {
+        opacity: 0.5;
+    }
+
+    90% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.slide img,
+.slide h3,
+.slide p {
+    display: none;
+}
+
+.slide.active img,
+.slide.active h3,
+.slide.active p {
+    display: block;
+}
+
+.arrows {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    color: white;
+}
+
+.pointers-wrapper {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+.pointer {
+    background-color: gray;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 1rem;
+    aspect-ratio: 1;
+    margin-right: 0.5rem;
+}
+
+.pointer.active {
+    background-color: white;
+}
+
+/* NEW */
+.slide__content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    align-items: center;
+    color: white;
+    padding-bottom: 5rem;
+    /* background: rgb(0, 0, 0);
+    background: -moz-linear-gradient(0deg,
+            rgba(0, 0, 0, 0.8519782913165266) 0%,
+            rgba(0, 0, 0, 0) 100%);
+    background: -webkit-linear-gradient(0deg,
+            rgba(0, 0, 0, 0.8519782913165266) 0%,
+            rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(0deg,
+            rgba(0, 0, 0, 0.8519782913165266) 0%,
+            rgba(0, 0, 0, 0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#000000", GradientType=1); */
+}
+
+.slide__title {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.slide__description {
+    width: 60%;
+    font-size: 0.75rem;
+    line-height: 1.7em;
+}
