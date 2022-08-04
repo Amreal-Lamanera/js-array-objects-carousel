@@ -116,6 +116,7 @@ for (let i = 0; i < slides.length; i++) {
 
     const tDiv = document.createElement('div');
     tDiv.className = 'grid-col';
+
     // tDiv.id = i;
     if (i === indexAct) {
         tDiv.classList.add('active');
@@ -174,24 +175,24 @@ for (let i = 0; i < slides.length; i++) {
 console.log(slideElements);
 
 // implementare i pointer
-const pointersWrapperElement = document.querySelector('.pointers-wrapper');
-const pointersContainer = [];
+// const pointersWrapperElement = document.querySelector('.pointers-wrapper');
+// const pointersContainer = [];
 
-for (let i = 0; i < slideElements.length; i++) {
-    let pointer;
-    pointer = document.createElement('li');
-    pointer.className = 'pointer';
-    // pointer.id = i;
+// for (let i = 0; i < slideElements.length; i++) {
+//     let pointer;
+//     pointer = document.createElement('li');
+//     pointer.className = 'pointer';
+//     // pointer.id = i;
 
-    if (i === indexAct) {
-        pointer.classList.add('active');
-    }
+//     if (i === indexAct) {
+//         pointer.classList.add('active');
+//     }
 
-    pointer.addEventListener('click', goTo.bind(pointer, i));
+//     pointer.addEventListener('click', goTo.bind(pointer, i));
 
-    pointersWrapperElement.append(pointer);
-    pointersContainer.push(pointer);
-};
+//     pointersWrapperElement.append(pointer);
+//     pointersContainer.push(pointer);
+// };
 
 // implementare freccia right
 const nextElement = document.querySelector('.arrow-next');
