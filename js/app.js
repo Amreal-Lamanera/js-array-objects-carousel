@@ -50,13 +50,18 @@ const slideElements = [];
 let indexAct = 0;
 
 const wrapperElement = document.querySelector('.slides-wrapper');
+const sliderElement = document.querySelector('main');
 
 // eventi di stop/restart dello scorrimento automatico
-wrapperElement.addEventListener('mouseenter', stopInterval);
-wrapperElement.addEventListener('mouseleave', restartInterval);
+sliderElement.addEventListener('mouseover', stopInterval);
+sliderElement.addEventListener('mouseout', restartInterval);
 
 // creazione scorrimento nel tempo
 let myInterval = setInterval(nextFun, 3000);
+
+const thumbnailElement = document.querySelector('.thumbnails .grid')
+// console.log(thumbnailElement);
+const thumbnailContainer = [];
 
 // generare il contenuto dello slider
 for (let i = 0; i < slides.length; i++) {
@@ -79,13 +84,50 @@ for (let i = 0; i < slides.length; i++) {
     const src = slides[i].url;
     // console.log(src);
     // creo elemento img
-    const img = document.createElement('img');
+    // const img = document.createElement('img');
     // assegno alla proprietà src di img il valore src
-    img.src = src;
+    // img.src = src;
     // console.log(img);
     // inserisco img in li
-    li.append(img);
+    // li.append(img);
     // console.log(li);
+    // li.style.backgroundImage.url = src;
+    li.style.backgroundImage = `url(${src})`;
+    li.style.backgroundSize = 'cover';
+    // console.dir(li.style);
+
+    /****************************************************
+        GESTIONE THUMBNAILS
+    ****************************************************/
+    // let pointer;
+    // pointer = document.createElement('li');
+    // pointer.className = 'pointer';
+    // pointer.id = i;
+
+    // if (i === indexAct) {
+    //     pointer.classList.add('active');
+    // }
+
+    // pointer.addEventListener('click', goTo.bind(pointer, i));
+
+    // pointersWrapperElement.append(pointer);
+    // pointersContainer.push(pointer);
+
+
+    const tDiv = document.createElement('div');
+    tDiv.className = 'grid-col';
+    // tDiv.id = i;
+    if (i === indexAct) {
+        tDiv.classList.add('active');
+    }
+    tDiv.addEventListener('click', goTo.bind(tDiv, i));
+    // const tImg = document.createElement('img');
+    // tImg.src = src;
+    // tDiv.append(tImg);
+    tDiv.style.backgroundImage = `url(${src})`;
+    tDiv.style.backgroundSize = 'cover';
+    thumbnailElement.append(tDiv);
+    thumbnailContainer.push(tDiv);
 
     /****************************************************
         SECONDA PARTE: (nuova)
@@ -139,7 +181,7 @@ for (let i = 0; i < slideElements.length; i++) {
     let pointer;
     pointer = document.createElement('li');
     pointer.className = 'pointer';
-    pointer.id = 'i';
+    // pointer.id = i;
 
     if (i === indexAct) {
         pointer.classList.add('active');
@@ -155,24 +197,28 @@ for (let i = 0; i < slideElements.length; i++) {
 const nextElement = document.querySelector('.arrow-next');
 
 nextElement.addEventListener('click', nextFun);
+// nextElement.addEventListener('mouseenter', stopInterval);
+// nextElement.addEventListener('mouseleave', restartInterval);
 
 // implementare freccia left
 const prevElement = document.querySelector('.arrow-prev');
-
 prevElement.addEventListener('click', prevFun);
+// prevElement.addEventListener('mouseenter', stopInterval);
+// prevElement.addEventListener('mouseleave', restartInterval);
 
 function goTo(i) {
     // se muovo slider resetto timer e lo faccio ripartire
     // resetInterval();
 
     // togliere active dal pointer attivo
-    pointersContainer[indexAct].classList.remove('active');
+    console.log(i);
+    thumbnailContainer[indexAct].classList.remove('active');
     // togliere active dalla slide attiva
     slideElements[indexAct].classList.remove('active');
 
     // aggiungere la classe active al pointer selezionato
     indexAct = i;
-    pointersContainer[indexAct].classList.add('active');
+    thumbnailContainer[indexAct].classList.add('active');
 
 
     // aggiungere la classe active alla slide corrispondente al pointer clickato
